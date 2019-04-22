@@ -11,7 +11,6 @@ import CoreBluetooth
 
 class ViewController: NSViewController {
     
-//    lazy var centralManager : CBCentralManager = CBCentralManager()
     var centralManager : CBCentralManager!
     var peripheral: CBPeripheral!
     var charactaristic: CBCharacteristic!
@@ -28,12 +27,10 @@ class ViewController: NSViewController {
         centralManager = CBCentralManager(delegate: self, queue: nil)
         availableDevices.delegate = self
         availableDevices.dataSource = self
-        // Do any additional setup after loading the view.
     }
 
     override var representedObject: Any? {
         didSet {
-        // Update the view, if already loaded.
         }
     }
     @IBAction func buttonTapped(_: AnyObject){
@@ -115,6 +112,6 @@ extension ViewController{
             peripheral.writeValue(value! as Data, for: writeCharactist, type: .withResponse)
         }
         
-        self.centralManager.cancelPeripheralConnection(peripheral) // 断开时机看需求而定
+        self.centralManager.cancelPeripheralConnection(peripheral)
     }
 }
